@@ -10,7 +10,7 @@ void split_str(string);
 
 class Date {
 private:
-	unsigned int year = 0; //unsigned = sin signo = solo valores positivos
+	unsigned int year = 0;
 	unsigned int month = 0;
 	unsigned int day = 0;
 	string dateInString;
@@ -19,7 +19,7 @@ public:
 	int valid_date = 0;
 	operator const char* ()
 	{
-		ostringstream formattedDate; // assists string construction
+		ostringstream formattedDate; 
 		formattedDate << day << " / " << month << " / " << year;
 		dateInString = formattedDate.str();
 		return dateInString.c_str();
@@ -27,7 +27,7 @@ public:
 	// Unary increment operator (prefix)
 	Date& operator ++ ()
 	{
-		// operator implementation code
+		
 		day++;
 		switch (month) {
 		case 1:
@@ -85,7 +85,7 @@ public:
 	}
 
 	Date(int, int, int);
-	void check_date(void);//Me base en la pagina https://www.abrirllave.com/c/ejercicio-validar-fecha.php#:~:text=Nota%201%3A%20Para%20que%20una,a%C3%B1o%20introducidos%20por%20el%20usuario.
+	void check_date(void);
 
 };
 
@@ -149,8 +149,7 @@ void split_str(string _fulldate) {
 	string array[4] = {};
 	int date_numbers[4] = {};
 	
-	_fulldate += '-'; //le añado un guion al final para poder cumplir el bucle
-	// Me base en el video de https://www.youtube.com/watch?v=BUy-SE6ZWGM&ab_channel=GeeksforGeeks
+	_fulldate += '-'; 
 	for (auto x : _fulldate)
 	{
 		if (x == '-' || x == '/' || x == ' ' || x== '.')
@@ -177,8 +176,8 @@ void split_str(string _fulldate) {
 	
 	
 	cout << "Sumando un dia a la fecha actual..." << endl << endl;
-	++d1;
-	cout << "La nueva fecha es: "<< d1;
+	++d1; //Sobrecarga de operadores ++
+	cout << "La nueva fecha es: "<< d1; //sobrecarga de operadores << insercion
 
 
 } 
@@ -186,9 +185,10 @@ void split_str(string _fulldate) {
 int main()
 {
 	string full_date;
-	cout << "Actividad 21-sep por |Adrian Alejandro Montes Mendoza| |22110135|" << endl;
-	cout << "Ingrese una fecha con el formato 'dd-mm-aaaa' o 'dd/mm/aaaa' " << endl;
+	cout << "Actividad Sobrecarga de operadores por |Adrian Alejandro Montes Mendoza| |22110135|" << endl;
+	cout << "Ingrese una fecha con el formato 'dd-mm-aaaa' o 'dd/mm/aaaa': ";
 	getline(cin, full_date);
+	cout << endl;
 	split_str(full_date);
 	
 }
